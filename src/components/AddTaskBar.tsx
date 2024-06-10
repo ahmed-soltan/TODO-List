@@ -1,10 +1,9 @@
-import { useList } from "@/hooks/useList";
 import { useStore } from "@/zustand/store";
 import { useState } from "react";
 
 const AddTaskBar = () => {
   const [taskTitle, setTaskTitle] = useState("");
-  const { addTask } = useList();
+  // const { addTask } = useList();
   const addNewTask = useStore((state)=>state.addTask)
 
   const handleAddTask = (e: React.FormEvent<HTMLFormElement>) => {

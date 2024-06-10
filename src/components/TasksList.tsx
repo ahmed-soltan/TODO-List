@@ -14,7 +14,7 @@ interface TasksListProps {
 }
 
 const TasksList = ({ task, index }: TasksListProps) => {
-  const { updateTaskStatus, deleteTask } = useList();
+  const { deleteTask } = useList();
   const [open, setOpen] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 

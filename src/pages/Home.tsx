@@ -1,6 +1,6 @@
 import AddTaskBar from "@/components/AddTaskBar"
 import TasksList from "@/components/TasksList"
-import { Task, useList } from "@/hooks/useList"
+import { Task } from "@/hooks/useList"
 import { useStore } from "@/zustand/store";
 
 const Home = () => {
