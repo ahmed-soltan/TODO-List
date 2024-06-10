@@ -4,6 +4,9 @@ import { BiTrash } from "react-icons/bi";
 import { RxDotsHorizontal } from "react-icons/rx";
 import { TbClockCheck, TbClockEdit, TbClockX } from "react-icons/tb";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import { updateTask } from "@/features/tasks/store";
+
 
 interface TasksListProps {
   task: Task;
@@ -12,22 +15,23 @@ interface TasksListProps {
 
 const TasksList = ({ task, index }: TasksListProps) => {
   const { updateTaskStatus, deleteTask } = useList();
-
   const [open, setOpen] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleChangeTaskStatus = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
-      if (isUpdating) return; // Prevent multiple updates within the delay period
+      if (isUpdating) return; 
 
       setIsUpdating(true);
       setTimeout(() => {
-        updateTaskStatus(index);
+        dispatch(updateTask(index));
         setIsUpdating(false);
-      }, 500); // 2 seconds delay
+      }, 500); 
     },
-    [updateTaskStatus, index, isUpdating]
+    [dispatch, index, isUpdating]
   );
 
   const taskIcon = useMemo(() => {
