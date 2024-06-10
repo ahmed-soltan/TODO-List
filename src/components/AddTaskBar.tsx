@@ -1,9 +1,12 @@
 import { useList } from "@/hooks/useList";
+import { useStore } from "@/zustand/store";
 import { useState } from "react";
 
 const AddTaskBar = () => {
   const [taskTitle, setTaskTitle] = useState("");
   const { addTask } = useList();
+  const addNewTask = useStore((state)=>state.addTask)
+
   const handleAddTask = (e: React.FormEvent<HTMLFormElement>) => {
     if(taskTitle===""){
         alert("Please enter a task");
@@ -20,7 +23,7 @@ const AddTaskBar = () => {
       date: dateString,
     };
     console.log("Task : ", task);
-    addTask(task);
+    addNewTask(task);
     setTaskTitle("");
   };
   return (

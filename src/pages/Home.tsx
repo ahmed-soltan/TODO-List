@@ -1,9 +1,13 @@
 import AddTaskBar from "@/components/AddTaskBar"
 import TasksList from "@/components/TasksList"
 import { Task, useList } from "@/hooks/useList"
+import { useStore } from "@/zustand/store";
 
 const Home = () => {
-    const {tasks} = useList();
+    // const {tasks} = useList();
+    const tasks = useStore((state)=>state.tasks)
+
+    console.log(tasks)
     console.log(tasks)
   return (
     <div className="flex flex-center justify-center flex-col gap-5 max-w-[1280px] m-auto">

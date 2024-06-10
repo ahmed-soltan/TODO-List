@@ -11,7 +11,8 @@ interface TasksListProps {
 }
 
 const TasksList = ({ task, index }: TasksListProps) => {
-  const { updateTaskStatus , deleteTask } = useList();
+  const { updateTaskStatus, deleteTask } = useList();
+
   const [open, setOpen] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -67,8 +68,12 @@ const TasksList = ({ task, index }: TasksListProps) => {
 
   const taskOptions = useMemo(
     () => (
-      <div className="flex items-start flex-col absolute bottom-[-55px] left-[10px] shadow-md transition-all z-50 p-2 bg-white border rounded-md w-[100px]">
-        <button type="button" className="py-1 flex items-center w-full" onClick={()=>deleteTask(index)}>
+      <div className="flex items-start flex-col absolute bottom-[-55px] left-[-100px] shadow-md transition-all z-50 p-2 bg-white border rounded-md w-[100px]">
+        <button
+          type="button"
+          className="py-1 flex items-center w-full"
+          onClick={() => deleteTask(index)}
+        >
           <BiTrash size={20} className="text-rose-400" />
           <p className="text-rose-400 text-xs">Delete</p>
         </button>
@@ -84,7 +89,7 @@ const TasksList = ({ task, index }: TasksListProps) => {
           {taskIcon}
           <h1 className="text-sm text-slate-700">{task.title}</h1>
         </div>
-        <div className="relative flex items-center gap-2">
+        <div className=" flex items-center gap-2">
           <p className="text-xs text-slate-500">
             {moment(task.date).fromNow()}
           </p>
@@ -93,7 +98,7 @@ const TasksList = ({ task, index }: TasksListProps) => {
             size={25}
             onClick={() => setOpen(!open)}
           />
-          {open && taskOptions}
+          <div className="relative">{open && taskOptions}</div>
         </div>
       </div>
     </div>
