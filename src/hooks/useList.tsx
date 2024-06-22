@@ -68,7 +68,7 @@ export const ListContextProvider = (props: any) => {
   const deleteTask = (index: number) => {
     setTasks((prev: Task[]) => {
       const updatedTaskList = prev.filter(
-        (_: Task, idx: number) => idx !== index // Change `==` to `!==` to filter out the task with the given index
+        (_: Task, idx: number) => idx !== index 
       );
   
       localStorage.setItem("tasks", JSON.stringify(updatedTaskList));

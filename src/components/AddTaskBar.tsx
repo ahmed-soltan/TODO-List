@@ -1,11 +1,12 @@
-import { useStore } from "@/zustand/store";
+import { addTask } from "@/features/tasks/store";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const AddTaskBar = () => {
   const [taskTitle, setTaskTitle] = useState("");
   // const { addTask } = useList();
-  const addNewTask = useStore((state)=>state.addTask)
-
+  // const addNewTask = useStore((state)=>state.addTask)
+  const dispatch = useDispatch()
   const handleAddTask = (e: React.FormEvent<HTMLFormElement>) => {
     if(taskTitle===""){
         alert("Please enter a task");
@@ -22,7 +23,9 @@ const AddTaskBar = () => {
       date: dateString,
     };
     console.log("Task : ", task);
-    addNewTask(task);
+    dispatch(addTask(task)) // Redux toolkit
+    // addNewTask(task);  zustand
+    // addTask(task) contextAPI
     setTaskTitle("");
   };
   return (

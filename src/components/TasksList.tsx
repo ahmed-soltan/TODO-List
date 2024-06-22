@@ -1,12 +1,11 @@
 import React, { useState, useCallback, useMemo } from "react";
-import { Task, useList } from "@/hooks/useList";
+import { Task } from "@/hooks/useList";
 import { BiTrash } from "react-icons/bi";
 import { RxDotsHorizontal } from "react-icons/rx";
 import { TbClockCheck, TbClockEdit, TbClockX } from "react-icons/tb";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { updateTask } from "@/features/tasks/store";
-
+import { deleteTask, updateTaskStatus } from "@/features/tasks/store";
 
 interface TasksListProps {
   task: Task;
@@ -14,7 +13,7 @@ interface TasksListProps {
 }
 
 const TasksList = ({ task, index }: TasksListProps) => {
-  const { deleteTask } = useList();
+  // const { deleteTask } = useList(); contextAPI
   const [open, setOpen] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -23,13 +22,13 @@ const TasksList = ({ task, index }: TasksListProps) => {
   const handleChangeTaskStatus = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
-      if (isUpdating) return; 
+      if (isUpdating) return;
 
       setIsUpdating(true);
       setTimeout(() => {
-        dispatch(updateTask(index));
+        dispatch(updateTaskStatus(index));
         setIsUpdating(false);
-      }, 500); 
+      }, 500);
     },
     [dispatch, index, isUpdating]
   );
@@ -76,7 +75,7 @@ const TasksList = ({ task, index }: TasksListProps) => {
         <button
           type="button"
           className="py-1 flex items-center w-full"
-          onClick={() => deleteTask(index)}
+          onClick={() => dispatch(deleteTask(index))}
         >
           <BiTrash size={20} className="text-rose-400" />
           <p className="text-rose-400 text-xs">Delete</p>
