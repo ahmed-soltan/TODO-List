@@ -2,13 +2,13 @@ import { addTask } from "@/features/tasks/store";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-const AddTaskBar = () => {
+const AddTaskBar = ({t}:{t:any}) => {
   const [taskTitle, setTaskTitle] = useState("");
   // const { addTask } = useList();
   // const addNewTask = useStore((state)=>state.addTask)
   const dispatch = useDispatch()
   const handleAddTask = (e: React.FormEvent<HTMLFormElement>) => {
-    if(taskTitle===""){
+    if(taskTitle.trim()===""){
         alert("Please enter a task");
         return;
     }
@@ -36,7 +36,7 @@ const AddTaskBar = () => {
       <input
         type="search"
         className="w-full py-3 border px-2 text-sm rounded-md"
-        placeholder="Type a Task"
+        placeholder={t("placeholder")}
         onChange={(e) => setTaskTitle(e.target.value)}
         value={taskTitle}
       />
@@ -44,7 +44,7 @@ const AddTaskBar = () => {
         className="bg-blue-500 text-white py-2 px-4 rounded-md w-full md:w-[100px]"
         type="submit"
       >
-        Add
+        {t("add")}
       </button>
     </form>
   );

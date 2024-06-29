@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import store from "./features/tasks";
 
 function App() {
+  
   return (
     <Provider store={store}>
       <ListProvider>

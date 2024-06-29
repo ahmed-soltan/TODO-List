@@ -10,9 +10,10 @@ import { deleteTask, updateTaskStatus } from "@/features/tasks/store";
 interface TasksListProps {
   task: Task;
   index: number;
+  t:any
 }
 
-const TasksList = ({ task, index }: TasksListProps) => {
+const TasksList = ({ task, index, t }: TasksListProps) => {
   // const { deleteTask } = useList(); contextAPI
   const [open, setOpen] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -78,7 +79,7 @@ const TasksList = ({ task, index }: TasksListProps) => {
           onClick={() => dispatch(deleteTask(index))}
         >
           <BiTrash size={20} className="text-rose-400" />
-          <p className="text-rose-400 text-xs">Delete</p>
+          <p className="text-rose-400 text-xs">{t("delete")}</p>
         </button>
       </div>
     ),
