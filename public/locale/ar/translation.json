@@ -3,5 +3,7 @@
   "delete": "حذف",
   "add": "اضافه",
   "placeholder": "اكتب مهمتك",
-  "language":"العربيه"
+  "language":"العربيه",
+    "arLang":"العربيه",
+  "enLang":"الانجليزيه"
 }

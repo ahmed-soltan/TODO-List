@@ -3,5 +3,7 @@
   "delete": "Delete",
   "add": "Add",
   "placeholder": "Type your Task",
-  "language":"English"
+  "language":"English",
+    "arLang":"Arabic",
+  "enLang":"English"
 }

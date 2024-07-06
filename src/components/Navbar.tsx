@@ -15,10 +15,10 @@ const Navbar = ({ t }: { t: any }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <Button onClick={()=>i18n.changeLanguage("en")} variant={"ghost"}>English</Button>
+          <Button onClick={()=>i18n.changeLanguage("en")} variant={"ghost"}>{t("enLang")}</Button>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Button onClick={()=>i18n.changeLanguage("ar")} variant={"ghost"}>العربيه</Button>
+          <Button onClick={()=>i18n.changeLanguage("ar")} variant={"ghost"}>{t("arLang")}</Button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
